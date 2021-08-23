@@ -94,7 +94,6 @@ RUN mkdir -p /workspace/app \
     && rm m2m.zip \
     && cp m2m/vocab/bpe_codes.32k.SRC_TGT m2m/vocab/bpe_codes.32k.SRC \
     && pip install -U pyicu pycld2 morfessor polyglot \
-    && polyglot download embeddings2.en transliteration2.hi transliteration2.kn \
-	&& conda clean -ya
+    && polyglot download embeddings2.en transliteration2.hi transliteration2.kn
 
 CMD ["/bin/bash"]
