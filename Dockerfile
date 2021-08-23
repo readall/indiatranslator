@@ -18,7 +18,7 @@ RUN set -eux; \
 		tzdata \
 	; \
 	rm -rf /var/lib/apt/lists/* \
-    set -ex; \
+    && set -ex; \
     	if ! command -v gpg > /dev/null; then \
             apt-get update; \
             apt-get install -y --no-install-recommends \
@@ -50,7 +50,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         vim \
 		procps \
         ; \
-	&& rm -rf /var/lib/apt/lists/* 
+	rm -rf /var/lib/apt/lists/* 
 RUN mkdir -p /workspace/app \
     && adduser --disabled-password --gecos '' --shell /bin/bash user \
     && chown -R user:user /workspace/app \
@@ -65,9 +65,9 @@ RUN mkdir -p /workspace/app \
     && conda install -y pandas \
     && conda install -y scikit-learn \ 
 	&& conda install -y matplotlib \
+    && pip install -U sentence-transformers \
 	&& conda install -y -c huggingface transformers \
     && conda install -y -c conda-forge sentencepiece \
-    && pip install -U sentence-transformers \
     && pip install -U datasets \
     && pip install -U pip setuptools wheel \
     && pip install -U spacy \
@@ -86,10 +86,10 @@ RUN mkdir -p /workspace/app \
     && git clone --depth=1 https://github.com/anoopkunchukuttan/indic_nlp_resources.git \
     && git clone --depth=1 https://github.com/rsennrich/subword-nmt.git \
     && cd .. \
-    && wget https://storage.googleapis.com/samanantar-public/V0.3/models/indic-en.zip \
+    && wget -q https://storage.googleapis.com/samanantar-public/V0.3/models/indic-en.zip \
     && unzip indic-en.zip \
     && rm indic-en.zip \
-    && wget https://storage.googleapis.com/samanantar-public/V0.3/models/m2m.zip \
+    && wget -q https://storage.googleapis.com/samanantar-public/V0.3/models/m2m.zip \
     && unzip m2m.zip \
     && rm m2m.zip \
     && cp m2m/vocab/bpe_codes.32k.SRC_TGT m2m/vocab/bpe_codes.32k.SRC \
