@@ -26,8 +26,8 @@ RUN set -eux; \
                 dirmngr \
             ; \
             rm -rf /var/lib/apt/lists/*; \
-        fi 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+        fi \
+    && apt-get update && apt-get install -y --no-install-recommends \
 		bzr \
 		git \
 		mercurial \
@@ -50,8 +50,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         vim \
 		procps \
         ; \
-	rm -rf /var/lib/apt/lists/* 
-RUN mkdir -p /workspace/app \
+	rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /workspace/app \
     && adduser --disabled-password --gecos '' --shell /bin/bash user \
     && chown -R user:user /workspace/app \
     && chown -R user:user /home/user \
