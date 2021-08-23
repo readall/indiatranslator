@@ -51,8 +51,8 @@ RUN set -eux; \
 		procps \
 	&& rm -rf /var/lib/apt/lists/* \
     && mkdir -p /workspace/app \
-    && adduser --disabled-password --gecos '' --shell /bin/bash user && \
-    chown -R user:user /workspace/app \
+    && adduser --disabled-password --gecos '' --shell /bin/bash user \
+    && chown -R user:user /workspace/app \
     && chown -R user:user /home/user \
     && chmod 777 /home/user \
     && curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \ 
