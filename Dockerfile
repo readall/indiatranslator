@@ -75,7 +75,7 @@ RUN set -eux; \
     && echo "export HF_HOME=/workspace/app/data/.cache/huggingface" >> ~/.bashrc \
     && echo "export TRANSFORMERS_CACHE=/workspace/app/data/.cache/huggingface" >> ~/.bashrc \
     && pip install -U boto3 regex sacremoses easyocr \
-    && pip install -U mosestokenizer indic-nlp-library mock sacrebleu tensorboardX pyarrow subword-nmt \
+    && pip install -U mosestokenizer  subword-nmt \
     && git clone --depth=1 https://github.com/pytorch/fairseq.git \
     && cd fairseq \
     && pip install --editable ./ \
@@ -85,6 +85,7 @@ RUN set -eux; \
     && git clone --depth=1 https://github.com/anoopkunchukuttan/indic_nlp_library.git \
     && git clone --depth=1 https://github.com/anoopkunchukuttan/indic_nlp_resources.git \
     && git clone --depth=1 https://github.com/rsennrich/subword-nmt.git \
+    && pip install -U pandas mock sacrebleu tensorboardX pyarrow indic-nlp-library \
     && cd .. \
     && wget -q https://storage.googleapis.com/samanantar-public/V0.3/models/indic-en.zip \
     && unzip indic-en.zip \
