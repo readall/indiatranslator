@@ -80,7 +80,7 @@ RUN set -eux; \
     && cd fairseq \
     && pip install --editable ./ \
     && cd .. \
-    && git clone  https://github.com/AI4Bharat/indicTrans.git \
+    && git clone  https://github.com/readall/indicTrans.git \
     && cd indicTrans \
     && git clone --depth=1 https://github.com/anoopkunchukuttan/indic_nlp_library.git \
     && git clone --depth=1 https://github.com/anoopkunchukuttan/indic_nlp_resources.git \
