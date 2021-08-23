@@ -48,7 +48,6 @@ RUN set -eux; \
 	    less \
         file \
         vim \
-		\
 		procps \
 	&& rm -rf /var/lib/apt/lists/* \
     && mkdir -p /workspace/app \
