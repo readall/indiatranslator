@@ -1,10 +1,10 @@
 FROM ubuntu:focal
 
 USER root
-WORKDIR /workspace/app \
-ENV HOME=/home/user \
-ENV CONDA_AUTO_UPDATE_CONDA=false \
-ENV PATH=/home/user/miniconda/bin:$PATH \
+WORKDIR /workspace/app
+ENV HOME=/home/user
+ENV CONDA_AUTO_UPDATE_CONDA=false
+ENV PATH=/home/user/miniconda/bin:$PATH
 ENV NO_CUDA=1
 
 
@@ -17,7 +17,7 @@ RUN set -eux; \
 		wget \
 		tzdata \
 	; \
-	&& rm -rf /var/lib/apt/lists/* \
+	rm -rf /var/lib/apt/lists/* \
     set -ex; \
     	if ! command -v gpg > /dev/null; then \
             apt-get update; \
@@ -26,8 +26,8 @@ RUN set -eux; \
                 dirmngr \
             ; \
             rm -rf /var/lib/apt/lists/*; \
-        fi \
-    && apt-get update && apt-get install -y --no-install-recommends \
+        fi 
+RUN apt-get update && apt-get install -y --no-install-recommends \
 		bzr \
 		git \
 		mercurial \
@@ -49,8 +49,9 @@ RUN set -eux; \
         file \
         vim \
 		procps \
-	&& rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /workspace/app \
+        ; \
+	&& rm -rf /var/lib/apt/lists/* 
+RUN mkdir -p /workspace/app \
     && adduser --disabled-password --gecos '' --shell /bin/bash user \
     && chown -R user:user /workspace/app \
     && chown -R user:user /home/user \
