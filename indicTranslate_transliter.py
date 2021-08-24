@@ -4,6 +4,9 @@ import easyocr
 from fairseq import checkpoint_utils, distributed_utils, options, tasks, utils
 from indicTrans.inference.engine import Model
 from polyglot.text import Text
+import gradio as gr
+
+
 
 class KannadaToHindi :
   def __init__(self):
@@ -41,4 +44,13 @@ kannada_img_file = '/workspace/app/data/kannada_04.jpg'
 transcode = KannadaToHindi()
 translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
 print(translittered)
-print(translated)    
+print(translated)
+
+iface = gr.Interface(fn=compare_documents_gr,
+            title = "Resume-Job-Matching",
+            description = "Find how suitable is your resume for the Job opening",
+            article = "Copy paste the job description and resume in respective places",
+            inputs=["text", "text"],
+            outputs=["text", "text", "text"],
+            server_port=7860,
+            server_name="0.0.0.0")
