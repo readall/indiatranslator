@@ -5,7 +5,7 @@ from fairseq import checkpoint_utils, distributed_utils, options, tasks, utils
 from indicTrans.inference.engine import Model
 from polyglot.text import Text
 import gradio as gr
-
+from PIL import Image
 
 
 class KannadaToHindi :
@@ -44,22 +44,27 @@ class KannadaToHindi :
 """
 Let's initialize the model so that use is quicker
 """
+ocr_file_name = "ocr_image.jpg"
 transcode = KannadaToHindi()
 # translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
 # print(translittered)
 # print(translated)
 
 
-def translate_transliter(kannada_img_file):
-  translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
+def translate_transliter(kannada_img_numpy):
+  # kannada_img_file.save("ocr_file","JPEG")
+  # input_file = "ocr_file.JPEG"
+  im = Image.fromarray(kannada_img_numpy).save(ocr_file_name)
+  translated, translittered = transcode.TranslateKannadaImageToHindi(ocr_file_name)
+  return translated, translittered
 
 
 
-iface = gr.Interface(fn=compare_documents_gr,
+iface = gr.Interface(fn=translate_transliter,
             title = "Kannada to Hindi Translate",
             description = "Translate kannada text from images to hindi",
             article = "Upload image containing kannada text",
-            inputs=radio.inputs.Image(type="file"),
+            inputs=gr.inputs.Image(),
             outputs=["text", "text"],
             server_port=7860,
             server_name="0.0.0.0")
