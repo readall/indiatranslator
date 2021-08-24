@@ -65,7 +65,7 @@ iface = gr.Interface(fn=translate_transliter,
             description = "Translate kannada text from images to hindi",
             article = "Upload image containing kannada text",
             inputs=gr.inputs.Image(),
-            outputs=["text", "text"],
+            outputs=[gr.outputs.Textbox(label="Output of Translation"),gr.outputs.Textbox(label="Output of Transliteration")],
             server_port=7860,
             server_name="0.0.0.0")
 
