@@ -97,4 +97,8 @@ RUN set -eux; \
     && pip install -U pyicu pycld2 morfessor polyglot \
     && polyglot download embeddings2.en transliteration2.hi transliteration2.kn
 
-CMD ["/bin/bash"]
+RUN git clone --depth=1 https://github.com/readall/indiatranslator.git
+
+COPY indicTranslate_transliter.py /workspace/app/
+ENTRYPOINT ["python", "indicTranslate_transliter.py"]
+# CMD ["/bin/bash"]

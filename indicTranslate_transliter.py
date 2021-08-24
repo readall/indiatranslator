@@ -40,17 +40,28 @@ class KannadaToHindi :
     translated_result = self.indicm2m_model.batch_translate(text_from_image, 'kn', 'hi')
     return translated_result, transliterred_result
 
-kannada_img_file = '/workspace/app/data/kannada_04.jpg'
+# kannada_img_file = '/workspace/app/data/kannada_04.jpg'
+"""
+Let's initialize the model so that use is quicker
+"""
 transcode = KannadaToHindi()
-translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
-print(translittered)
-print(translated)
+# translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
+# print(translittered)
+# print(translated)
+
+
+def translate_transliter(kannada_img_file):
+  translated, translittered = transcode.TranslateKannadaImageToHindi(kannada_img_file)
+
+
 
 iface = gr.Interface(fn=compare_documents_gr,
-            title = "Resume-Job-Matching",
-            description = "Find how suitable is your resume for the Job opening",
-            article = "Copy paste the job description and resume in respective places",
-            inputs=["text", "text"],
-            outputs=["text", "text", "text"],
+            title = "Kannada to Hindi Translate",
+            description = "Translate kannada text from images to hindi",
+            article = "Upload image containing kannada text",
+            inputs=radio.inputs.Image(type="file"),
+            outputs=["text", "text"],
             server_port=7860,
             server_name="0.0.0.0")
+
+iface.launch()
