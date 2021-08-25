@@ -100,5 +100,7 @@ RUN set -eux; \
 RUN git clone --depth=1 https://github.com/readall/indiatranslator.git
 
 COPY indicTranslate_transliter.py /workspace/app/
+COPY aliases $HOME/.bash_aliases
+
 ENTRYPOINT ["python", "indicTranslate_transliter.py"]
 # CMD ["/bin/bash"]
