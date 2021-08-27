@@ -11,6 +11,10 @@ There is a docker image available.
 To use the docker image
 ```
   docker pull llearnell/indictranslate
+
+  alternatively you can use docker-compose
+
+  docker-compose --compatibility up -d
 ```
 
 The docker starts a translation demo server on port 7860.
