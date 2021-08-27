@@ -44,9 +44,9 @@ The docker starts a translation demo server on port 7860.
 
 ```
   @misc {kunchukuttan2020indicnlp,
-  author = "Anoop Kunchukuttan",
-  title = "{The IndicNLP Library}",
-  year = "2020",
-  howpublished={\url{https://github.com/anoopkunchukuttan/indic_nlp_library/blob/master/docs/indicnlp.pdf}}
+    author = "Anoop Kunchukuttan",
+    title = "{The IndicNLP Library}",
+    year = "2020",
+    howpublished={\url{https://github.com/anoopkunchukuttan/indic_nlp_library/blob/master/docs/indicnlp.pdf}}
   }
 ```
