@@ -4,11 +4,18 @@ Helps in reading an unknown Indian language as well as understanding the meaning
 
 Initial proof of concept takes images and provides a translation.
 
-## Google translate also does similar things thus I am stopping further development. 
+## Google translate also does similar things thus I am stopping further development.
+
+## If you want to use this repo
 There is a docker image available.
 To use the docker image
+```
   docker pull llearnell/indictranslate
+```
+
 The docker starts a translation demo server on port 7860.
+
+**Please note** the performance is quite slow, on a 16 vCPU 40G RAM system, it takes around 16 seconds to provide the output. This level of performance may not be acceptable for end user applications.
 
 ## Citation
 ```
